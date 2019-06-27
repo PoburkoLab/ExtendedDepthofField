@@ -58,8 +58,28 @@ public class ExtendedDepthOfField {
 		this.parameters = parameters;
 		this.imp = imp;
 	}
-	
-	
+
+	/**
+	 * Helper method to generate output file name.
+	 */
+	private String getOutputTitle() {
+		String inputTitle = imp.getTitle();
+		String outputTitle = "Output";
+
+		if(inputTitle != null && !inputTitle.equals("")) {
+
+			int extensionIndex = inputTitle.lastIndexOf(".");
+			if(extensionIndex != -1 ){
+				inputTitle = inputTitle.substring(0, extensionIndex);
+			}
+
+			outputTitle = inputTitle + "_EDF";
+		}
+
+		return outputTitle;
+	}
+
+
 	/**
 	 * Run the main processing.
 	 */
@@ -188,18 +208,19 @@ public class ExtendedDepthOfField {
 		
 		ImagePlus impComposite = null;
 		ImagePlus impHeightMap = null;
+		String outputTitle = getOutputTitle();
 		
 		if(parameters.color && parameters.outputColorMap==Parameters.COLOR_RGB) {
 			ColorProcessor cp;
 			if ( (waveletMethod && parameters.reassignment) || !waveletMethod){
 				cp = PostProcessing.reassignmentColor(ima[1],imp.getStack());
-				impComposite = new ImagePlus("Output",cp);
+				impComposite = new ImagePlus(outputTitle,cp);
 			}else {
-				impComposite = new ImagePlus("Output", ima[0].buildImageStack());
+				impComposite = new ImagePlus(outputTitle, ima[0].buildImageStack());
 			}
 		} 
 		else {
-			impComposite = new ImagePlus("Output", ima[0].buildImageStack());
+			impComposite = new ImagePlus(outputTitle, ima[0].buildImageStack());
 		}
 		
 		// Topology post-processing.
