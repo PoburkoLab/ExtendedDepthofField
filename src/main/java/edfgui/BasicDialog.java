@@ -455,6 +455,7 @@ public class BasicDialog extends AbstractDialog
 		parameters.setQualitySettings(index);
 		index = (int)jSliderRegularization.getValue();
 		parameters.setTopologySettings(index);
+		parameters.showTopology = this.jCheckBoxShowHeightMap.isSelected();
 	}
 	
 	/**

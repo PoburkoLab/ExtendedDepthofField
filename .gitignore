@@ -1,10 +1,4 @@
+# Ignore
 .idea/
 Extended_Depth_of_Field.iml
-ExtendedDepthofField.iml
 target/
-target/classes/
-target/generated-sources/
-target/maven-archiver/
-target/maven-status/
-target/dependency-reduced-pom.xml
-target/original-Extended_Depth_of_Field-10.11.2015-MODIFIED.jar
