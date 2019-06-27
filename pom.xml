@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <properties>
+        <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
+    </properties>
+
+    <!---Build a jar containing the sc.fiji:wavelets & sc.fiji:imageware classes-->
+    <build><plugins><plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>1.6</version>
+        <executions>
+            <execution>
+                <phase>package</phase>
+                <goals>
+                    <goal>shade</goal>
+                </goals>
+                <configuration>
+                    <artifactSet>
+                        <includes>
+                            <include>sc.fiji:wavelets</include>
+                            <include>sc.fiji:imageware</include>
+                        </includes>
+                    </artifactSet>
+                </configuration>
+            </execution>
+        </executions>
+    </plugin></plugins></build>
+
+    <groupId>ca.polab</groupId>
+    <artifactId>Extended_Depth_of_Field</artifactId>
+    <version>10.11.2015-MODIFIED</version>
+
+    <developers>
+        <developer>
+            <name>Alex Prudencio</name>
+            <organization>Biomedical Imaging Group, EPFL</organization>
+            <organizationUrl>http://bigwww.epfl.ch/</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>+1</timezone>
+        </developer>
+        <developer>
+            <name>Daniel Sage</name>
+            <url>http://bigwww.epfl.ch/sage/</url>
+            <organization>Biomedical Imaging Group, EPFL</organization>
+            <organizationUrl>http://bigwww.epfl.ch/</organizationUrl>
+            <roles>
+                <role>maintainer</role>
+            </roles>
+            <timezone>+1</timezone>
+        </developer>
+        <developer>
+            <name>Jesse Berent</name>
+            <url>http://bigwww.epfl.ch/sage/</url>
+            <organization>Biomedical Imaging Group, EPFL</organization>
+            <organizationUrl>http://bigwww.epfl.ch/</organizationUrl>
+        </developer>
+        <developer>
+            <name>Kai Uwe Barthel</name>
+            <url>http://bigwww.epfl.ch/sage/</url>
+            <organization>Biomedical Imaging Group, EPFL</organization>
+            <organizationUrl>http://bigwww.epfl.ch/</organizationUrl>
+        </developer>
+    </developers>
+
+    <repositories>
+        <repository>
+            <id>imagej.public</id>
+            <url>http://maven.imagej.net/content/groups/public</url>
+        </repository>
+
+        <repository>
+            <id>scijava.public</id>
+            <url>https://maven.scijava.org/content/groups/public</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!-- Fiji dependencies -->
+        <dependency>
+            <groupId>sc.fiji</groupId>
+            <artifactId>imageware</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>sc.fiji</groupId>
+            <artifactId>wavelets</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+
+        <!-- ImageJ dependencies -->
+        <dependency>
+            <groupId>net.imagej</groupId>
+            <artifactId>ij</artifactId>
+            <version>1.52o</version>
+        </dependency>
+
+    </dependencies>
+
+</project>
